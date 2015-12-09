@@ -1,3 +1,5 @@
+import nltk
+
 #hardcoded tweets to start off with
 pos_tweets = [('I love this car', 'positive'),
               ('This view is amazing', 'positive'),
@@ -32,7 +34,6 @@ for (words, sentiment) in test_tweets:
 print test_tweets2
 
 #The list of word features need to be extracted from the tweets. It is a list with every distinct words ordered by frequency of appearance. We use the following function to get the list plus the two helper functions.
-word_features = get_word_features(get_words_in_tweets(tweets))
 
 def get_words_in_tweets(tweets):
     all_words = []
@@ -44,3 +45,34 @@ def get_word_features(wordlist):
     wordlist = nltk.FreqDist(wordlist)
     word_features = wordlist.keys()
     return word_features
+
+word_features = get_word_features(get_words_in_tweets(tweets))
+
+#To do that, we first need a feature extractor. The one we are going to use returns a dictionary indicating what words are contained in the input passed. Here, the input is the tweet. We use the word features list defined above along with the input to create the dictionary.
+def extract_features(document):
+    document_words = set(document)
+    features = {}
+    for word in word_features:
+        features['contains(%s)' % word] = (word in document_words)
+    print features
+    return features
+
+
+
+
+
+extract_features(['love', 'this', 'car'])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
