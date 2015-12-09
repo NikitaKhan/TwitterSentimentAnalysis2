@@ -57,12 +57,17 @@ def extract_features(document):
     print features
     return features
 
+extract_features(['love', 'this', 'car'])
+
+#The variable ‘training_set’ contains the labeled feature sets. It is a list of tuples which each tuple containing the feature dictionary and the sentiment string for each tweet. The sentiment string is also called ‘label’.
 training_set = nltk.classify.apply_features(extract_features, tweets)
 
+#train the classifier
+classifier = nltk.NaiveBayesClassifier.train(training_set)
 
 
 
-extract_features(['love', 'this', 'car'])
+
 
 
 
