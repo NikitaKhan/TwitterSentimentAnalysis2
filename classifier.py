@@ -30,3 +30,17 @@ for (words, sentiment) in test_tweets:
     test_tweets2.append((words_filtered, sentiment))
 
 print test_tweets2
+
+#The list of word features need to be extracted from the tweets. It is a list with every distinct words ordered by frequency of appearance. We use the following function to get the list plus the two helper functions.
+word_features = get_word_features(get_words_in_tweets(tweets))
+
+def get_words_in_tweets(tweets):
+    all_words = []
+    for (words, sentiment) in tweets:
+        all_words.extend(words)
+    return all_words
+
+def get_word_features(wordlist):
+    wordlist = nltk.FreqDist(wordlist)
+    word_features = wordlist.keys()
+    return word_features
