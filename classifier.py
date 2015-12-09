@@ -57,6 +57,7 @@ def extract_features(document):
     print features
     return features
 
+training_set = nltk.classify.apply_features(extract_features, tweets)
 
 
 
