@@ -1,6 +1,6 @@
 import nltk
 from nltk.probability import ELEProbDist, FreqDist, DictionaryProbDist
-=======
+
 import csv
 
 
@@ -48,9 +48,7 @@ for (words, sentiment) in test_tweets:
     test_tweets2.append((words_filtered, sentiment))
 
 
-=======
-#print test_tweets2
->>>>>>> origin/master
+
 
 #The list of word features need to be extracted from the tweets. It is a list with every distinct words ordered by frequency of appearance. We use the following function to get the list plus the two helper functions.
 
@@ -103,7 +101,7 @@ print "hello"
 #test
 tweet = 'Nikita has been defeated'
 print classifier.classify(extract_features(tweet.split()))
-=======
+
 
 #print label_probdist.prob('positive')
 #print label_probdist.prob('negative')
@@ -115,7 +113,6 @@ print classifier.classify(extract_features(tweet.split()))
 tweet = 'Larry is my friend'
 #print classifier.classify(extract_features(tweet.split()))
 
->>>>>>> origin/master
 
 
 
