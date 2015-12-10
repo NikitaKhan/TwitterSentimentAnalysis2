@@ -1,12 +1,13 @@
 import nltk
 import csv
 
+
 from nltk.probability import ELEProbDist, FreqDist
 from nltk import NaiveBayesClassifier
 from collections import defaultdict
 
 def readCSV():
-    file = open('corpus.csv')
+    file = open('corpus.csv', 'rb')
     reader = csv.reader(file)
     finalList = []
     tup = ()
