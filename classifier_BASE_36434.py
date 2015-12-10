@@ -1,10 +1,7 @@
 import nltk
-from nltk.probability import ELEProbDist, FreqDist, DictionaryProbDist
-=======
 import csv
 
 from nltk.probability import ELEProbDist, FreqDist
->>>>>>> origin/master
 from nltk import NaiveBayesClassifier
 from collections import defaultdict
 
@@ -46,10 +43,7 @@ for (words, sentiment) in test_tweets:
     words_filtered = [e.lower() for e in words.split() if len(e) >= 3]
     test_tweets2.append((words_filtered, sentiment))
 
-
-=======
 #print test_tweets2
->>>>>>> origin/master
 
 #The list of word features need to be extracted from the tweets. It is a list with every distinct words ordered by frequency of appearance. We use the following function to get the list plus the two helper functions.
 
@@ -90,19 +84,8 @@ def train(labeled_featuresets, estimator=ELEProbDist):
     label_probdist = estimator(label_freqdist)
     # Create the P(fval|label, fname) distribution
     feature_probdist = {}
-    print label_probdist.prob('positive')
-    print label_probdist.prob('negative')
-    print feature_probdist[('negative', 'contains(best)')].prob(True)
     return NaiveBayesClassifier(label_probdist, feature_probdist)
 
-print "hello"
-print classifier.show_most_informative_features(32)
-print "hello"
-
-#test
-tweet = 'Nikita has been defeated'
-print classifier.classify(extract_features(tweet.split()))
-=======
 
 #print label_probdist.prob('positive')
 #print label_probdist.prob('negative')
@@ -114,7 +97,6 @@ print classifier.classify(extract_features(tweet.split()))
 tweet = 'Larry is my friend'
 #print classifier.classify(extract_features(tweet.split()))
 
->>>>>>> origin/master
 
 
 
