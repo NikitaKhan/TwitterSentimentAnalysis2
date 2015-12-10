@@ -1,5 +1,5 @@
 import nltk
-from nltk.probability import ELEProbDist, FreqDist
+from nltk.probability import ELEProbDist, FreqDist, DictionaryProbDist
 from nltk import NaiveBayesClassifier
 from collections import defaultdict
 
@@ -75,16 +75,17 @@ def train(labeled_featuresets, estimator=ELEProbDist):
     label_probdist = estimator(label_freqdist)
     # Create the P(fval|label, fname) distribution
     feature_probdist = {}
+    print label_probdist.prob('positive')
+    print label_probdist.prob('negative')
+    print feature_probdist[('negative', 'contains(best)')].prob(True)
     return NaiveBayesClassifier(label_probdist, feature_probdist)
 
-print label_probdist.prob('positive')
-print label_probdist.prob('negative')
-print feature_probdist[('negative', 'contains(best)')].prob(True)
+print "hello"
 print classifier.show_most_informative_features(32)
-
+print "hello"
 
 #test
-tweet = 'Larry is my friend'
+tweet = 'Nikita has been defeated'
 print classifier.classify(extract_features(tweet.split()))
 
 
