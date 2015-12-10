@@ -66,6 +66,28 @@ training_set = nltk.classify.apply_features(extract_features, tweets)
 #train the classifier
 classifier = nltk.NaiveBayesClassifier.train(training_set)
 
+#Let’s take a look inside the classifier train method in the source code of the NLTK library. ‘label_probdist’ is the prior probability of each label and ‘feature_probdist’ is the feature/value probability dictionary. Those two probability objects are used to create the classifier.
+def train(labeled_featuresets, estimator=ELEProbDist):
+    ...
+    # Create the P(label) distribution
+    label_probdist = estimator(label_freqdist)
+    ...
+    # Create the P(fval|label, fname) distribution
+    feature_probdist = {}
+    ...
+    return NaiveBayesClassifier(label_probdist, feature_probdist)
+
+print label_probdist.prob('positive')
+print label_probdist.prob('negative')
+print feature_probdist[('negative', 'contains(best)')].prob(True)
+print classifier.show_most_informative_features(32)
+
+
+#test
+tweet = 'Larry is my friend'
+print classifier.classify(extract_features(tweet.split()))
+
+
 
 
 
