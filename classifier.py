@@ -34,7 +34,7 @@ for (words, sentiment) in test_tweets:
     words_filtered = [e.lower() for e in words.split() if len(e) >= 3]
     test_tweets2.append((words_filtered, sentiment))
 
-print test_tweets2
+
 
 #The list of word features need to be extracted from the tweets. It is a list with every distinct words ordered by frequency of appearance. We use the following function to get the list plus the two helper functions.
 
