@@ -57,6 +57,7 @@ def extract_features(document):
     print features
     return features
 
+#features
 extract_features(['love', 'this', 'car'])
 
 #The variable ‘training_set’ contains the labeled feature sets. It is a list of tuples which each tuple containing the feature dictionary and the sentiment string for each tweet. The sentiment string is also called ‘label’.
