@@ -1,4 +1,7 @@
 import nltk
+from nltk.probability import ELEProbDist, FreqDist
+from nltk import NaiveBayesClassifier
+from collections import defaultdict
 
 #hardcoded tweets to start off with
 pos_tweets = [('I love this car', 'positive'),
@@ -60,21 +63,18 @@ def extract_features(document):
 #features
 extract_features(['love', 'this', 'car'])
 
-#The variable ‘training_set’ contains the labeled feature sets. It is a list of tuples which each tuple containing the feature dictionary and the sentiment string for each tweet. The sentiment string is also called ‘label’.
+#The variable  training_setcontains the labeled feature sets. It is a list of tuples which each tuple containing the feature dictionary and the sentiment string for each tweet. The sentiment string is also called label
 training_set = nltk.classify.apply_features(extract_features, tweets)
 
 #train the classifier
 classifier = nltk.NaiveBayesClassifier.train(training_set)
 
-#Let’s take a look inside the classifier train method in the source code of the NLTK library. ‘label_probdist’ is the prior probability of each label and ‘feature_probdist’ is the feature/value probability dictionary. Those two probability objects are used to create the classifier.
+#Lets take a look inside the classifier train method in the source code of the NLTK library. label_probdist is the prior probability of each label and feature_probdist is the feature/value probability dictionary. Those two probability objects are used to create the classifier.
 def train(labeled_featuresets, estimator=ELEProbDist):
-    ...
     # Create the P(label) distribution
     label_probdist = estimator(label_freqdist)
-    ...
     # Create the P(fval|label, fname) distribution
     feature_probdist = {}
-    ...
     return NaiveBayesClassifier(label_probdist, feature_probdist)
 
 print label_probdist.prob('positive')
