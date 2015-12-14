@@ -1,6 +1,10 @@
 import nltk
 from nltk.probability import ELEProbDist, FreqDist, DictionaryProbDist
 import csv
+
+
+from nltk.probability import ELEProbDist, FreqDist
+
 from nltk import NaiveBayesClassifier
 from collections import defaultdict
 
@@ -237,6 +241,8 @@ classifier = nltk.NaiveBayesClassifier.train(training_set)
 for tweet in sanews:
     #print classifier.show_most_informative_features(32)
     print classifier.classify(extract_features(tweet.split()))
+tweet = 'Nikita has been defeated'
+print classifier.classify(extract_features(tweet.split()))
 
 
 #print label_probdist.prob('positive')
@@ -248,7 +254,6 @@ for tweet in sanews:
 #test
 #tweet = 'Larry is my friend'
 #print classifier.classify(extract_features(tweet.split()))
-
 
 
 
